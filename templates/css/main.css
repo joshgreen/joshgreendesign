@@ -1,0 +1,69 @@
+html  {
+  font-family: "proxima-nova", sans-serif;
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 1.5;
+}
+
+body {
+
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "proxima-nova";
+  margin-bottom: .5rem;
+  line-height: 1.1;
+}
+
+.site-header {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(5, 18px);
+  position: relative;
+}
+
+.bg {
+  background: #FF9900;
+  grid-column: span 10;
+  grid-row: span 4;
+}
+
+.logo {
+  background: #2d4059;
+  font-size: 0.6em;
+  height: 75px;
+  position: absolute;
+  width: 335px;
+}
+
+.logo h1 {
+  margin: 0;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.site-navigation nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-navigation a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 0.7em;
+  text-decoration: none;
+  display: block;
+  padding: 1rem 1.4rem;
+}
