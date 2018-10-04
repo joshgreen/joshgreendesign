@@ -52,7 +52,6 @@ cpbackup-exclude.conf
 craft
 craft.bat
 etc/
-img/
 mail/
 modules/
 ssl/
