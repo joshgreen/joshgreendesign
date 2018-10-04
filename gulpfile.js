@@ -30,7 +30,7 @@ gulp.task('sass', function () {
     .pipe(cleanCSS({ compatibility: 'ie9' }))
     .pipe(rename('style.css'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('web/assets/css'))
+    .pipe(gulp.dest('public_html/assets/css'))
 
     .pipe(browserSync.reload({
       stream: true
@@ -45,7 +45,7 @@ gulp.task('scripts', function () {
       .pipe(uglify())
       .pipe(concat('all.js'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('web/assets/js'));
+    .pipe(gulp.dest('public_html/assets/js'));
 });
 
 // Image task
@@ -55,7 +55,7 @@ gulp.task('images', function () {
   .pipe(cache(imagemin({
       interlaced: true
     })))
-  .pipe(gulp.dest('web/assets/img'))
+  .pipe(gulp.dest('public_html/assets/img'))
 });
 
 // Browser sync
@@ -71,8 +71,8 @@ gulp.task('watch', function () {
   gulp.watch('src/sass/**/*.+(scss|sass)', ['sass']);
   // Other watchers
   gulp.watch('templates/**/*.*', browserSync.reload);
-  gulp.watch('web/assets/js/**/*.js', browserSync.reload);
-  gulp.watch('web/assets/img/**/*.+(png|jpg|jpeg|gif|svg)', browserSync.reload);
+  gulp.watch('public_html/assets/js/**/*.js', browserSync.reload);
+  gulp.watch('public_html/assets/img/**/*.+(png|jpg|jpeg|gif|svg)', browserSync.reload);
 });
 
 
