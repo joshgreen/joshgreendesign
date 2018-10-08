@@ -1,0 +1,16 @@
+{# Create an entry query and set some parameters on it #}
+{% set entryQuery = craft.entries()
+    .section('blog')
+    .orderBy('postDate desc')
+    .limit(10) %}
+
+{# Execute the query and get the results #}
+{% set entries = entryQuery.all() %}
+
+{% for entry in entries %}
+    <article>
+        <h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
+
+        <a href="{{ entry.url }}">Continue reading</a>
+    </article>
+{% endfor %}
