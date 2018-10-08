@@ -1,16 +1,34 @@
+{% extends "_layout" %}
+{% set title = "Home" %}
+
+{% block body %}
+
 {# Create an entry query and set some parameters on it #}
 {% set entryQuery = craft.entries()
-    .section('blog')
-    .orderBy('postDate desc')
-    .limit(10) %}
+  .section('blog')
+  .orderBy('postDate desc')
+  .limit(10) %}
 
 {# Execute the query and get the results #}
 {% set entries = entryQuery.all() %}
-
+<main>
+    <section class="col-full">
 {% for entry in entries %}
-    <article>
-        <h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
 
-        <a href="{{ entry.url }}">Continue reading</a>
-    </article>
+  <article>
+      <h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
+
+      <a href="{{ entry.url }}">Continue reading</a>
+  </article>
 {% endfor %}
+</section>
+</main>
+
+{% if currentUser %}
+Welcome, {{ currentUser.friendlyName }}!
+{% endif %}
+
+
+{% endblock %}
+
+

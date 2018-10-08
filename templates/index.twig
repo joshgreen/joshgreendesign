@@ -1,28 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{{ siteName }}</title>
-  <link href="{{ siteUrl }}assets/css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.typekit.net/oyw5uxy.css">
-</head>
-<body>
-  <header id="header" class="site-header">
-    <section class="site-branding">
-      <img src="{{ siteUrl }}assets/img/joshgreendesign-logo.svg" alt="Josh Green Design logo" class="site-logo">
-    </section>
-    <section class="site-navigation">
-      <nav>
-        <ul>
-          <li><a href="/">Homepage</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </nav>
-    </section>
-  </header><!-- /header -->
+{% extends "_layout" %}
+{% set title = "Home" %}
+
+{% block body %}
+
   <main>
     <section class="col-full">
       <h1>Version controlled!</h1>
@@ -36,11 +16,5 @@ Welcome, {{ currentUser.friendlyName }}!
 {% endif %}
 
 
-  <footer class="site-footer">
-    <p>
-      i am some footer text
-    </p>
-  </footer>
-  <script src="{{ siteUrl }}assets/js/all.js" defer></script>
-</body>
-</html>
+{% endblock %}
+
