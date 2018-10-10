@@ -2,31 +2,23 @@
 {% set title = "Home" %}
 
 {% block body %}
-
-{# Create an entry query and set some parameters on it #}
-{% set entryQuery = craft.entries()
-  .section('blog')
-  .orderBy('postDate desc')
-  .limit(10) %}
-
-{# Execute the query and get the results #}
-{% set entries = entryQuery.all() %}
 <main>
     <section class="col-full">
-{% for entry in entries %}
+{% paginate craft.entries.section('blog').limit(4) as pageInfo, pageEntries  %}
 
-  <article>
-      <h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
-
-      <a href="{{ entry.url }}" class="basser">Continue reading</a>
-  </article>
+{% for entry in pageEntries %}
+    <article>
+        <h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
+        {{ entry.blogExcerpt }}
+    </article>
 {% endfor %}
+<a href="{{ pageInfo.firstUrl }}">First Page</a>
+{% if pageInfo.prevUrl %}<a href="{{ pageInfo.prevUrl }}">Previous Page</a>{% endif %}
+{% if pageInfo.nextUrl %}<a href="{{ pageInfo.nextUrl }}">Next Page</a>{% endif %}
+<a href="{{ pageInfo.lastUrl }}">Last Page</a>
+
 </section>
 </main>
-
-{% if currentUser %}
-Welcome, {{ currentUser.friendlyName }}!
-{% endif %}
 
 
 {% endblock %}

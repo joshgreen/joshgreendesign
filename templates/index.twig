@@ -8,6 +8,15 @@
       <h1>Version controlled!</h1>
       <h3>Josh green</h3>
       <a href="mailto:josh@joshgreendesign.com" target="_blank">email me</a> ✉️
+
+      <p>Is it quitting time?</p>
+
+{% set hour = now|date("G") %}
+{% if hour >= 16 and hour < 18 %}
+    <p>Yes!</p>
+{% else %}
+    <p>Nope.</p>
+{% endif %}
     </section>
   </main>
 
