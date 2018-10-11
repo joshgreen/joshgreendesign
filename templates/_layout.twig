@@ -5,11 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ siteName }}</title>
-  <link href="{{ siteUrl }}assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ siteUrl }}assets/css/style.css">
   <link rel="stylesheet" href="https://use.typekit.net/oyw5uxy.css">
+  <link rel="stylesheet" href="{{ siteUrl }}assets/css/prism.css">
+  <script src="assets/js/smoothscroll.js"></script>
 </head>
-<body>
-<header id="header" class="site-header">
+<body class="site">
+  <a href="#main" class="js-scroll-into-main">Skip to main content</a>
+
+
+
+
+<header id="header" class="site-header" role="banner">
     <section class="site-branding">
       <a href="{{ siteUrl }}"><img src="{{ siteUrl }}assets/img/joshgreendesign-logo.svg" alt="Josh Green Design logo" class="site-logo"></a>
     </section>
@@ -23,15 +30,40 @@
       </nav>
     </section>
   </header><!-- /header -->
-{% block body %}
-        Default content
-{% endblock %}
 
-  <footer class="site-footer">
-    <p>
-      &copy; {{ now | date('Y') }} {{ siteName }}
-    </p>
-  </footer>
+
+
+  <main id="main" role="main" class="site-content">
+  {% block body %}
+
+  {% endblock %}
+  </main> <!--@main-->
+
+
+
+  <div class="stt"><a href="" id="backToTop" class="scroll-to-top"></a></div>
+<footer class="site-footer" role="contentinfo">
+  <p>The current time is {{ now|date("g:i a") }}.</p>
+  <p>&copy;2014 - {{ now|date("Y") }}</p>
+</footer>
   <script src="{{ siteUrl }}assets/js/all.js" defer></script>
+
+<script>
+  window.addEventListener('load', function () {
+   // scroll to top
+    document.querySelector('.scroll-to-top').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector('.site-header').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // scroll into view
+    document.querySelector('.js-scroll-into-main').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector('#main').scrollIntoView({ behavior: 'smooth' });
+    });
+
+  });
+</script>
+<script src="assets/js/prism.js"></script>
 </body>
 </html>
