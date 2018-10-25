@@ -16,6 +16,7 @@ var concat = require('gulp-concat');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
 var rename = require('gulp-rename');
+var plumber = require('gulp-plumber');
 
 
 // Css task
@@ -31,7 +32,6 @@ gulp.task('sass', function () {
     .pipe(rename('style.css'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('public_html/assets/css'))
-
     .pipe(browserSync.reload({
       stream: true
     }))
@@ -42,10 +42,14 @@ gulp.task('sass', function () {
 gulp.task('scripts', function () {
   return gulp.src('src/javascript/**/*.js')
     .pipe(sourcemaps.init())
+      .pipe(plumber())
       .pipe(uglify())
       .pipe(concat('all.js'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('public_html/assets/js'));
+    .pipe(gulp.dest('public_html/assets/js'))
+    .pipe(browserSync.reload({
+      stream: true
+    }))
 });
 
 // Image task
@@ -69,10 +73,9 @@ gulp.task('browserSync', function () {
 // Watch task
 gulp.task('watch', function () {
   gulp.watch('src/sass/**/*.+(scss|sass)', ['sass']);
-  // Other watchers
   gulp.watch('templates/**/*.*', browserSync.reload);
-  gulp.watch('public_html/assets/js/**/*.js', browserSync.reload);
-  gulp.watch('public_html/assets/img/**/*.+(png|jpg|jpeg|gif|svg)', browserSync.reload);
+  gulp.watch('src/javascript/**/*.js', ['scripts']);
+  gulp.watch('src/images/**/*.+(png|jpg|jpeg|gif|svg)', ['images']);
 });
 
 

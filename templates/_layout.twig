@@ -11,12 +11,10 @@
   <script src="assets/js/smoothscroll.js"></script>
 </head>
 <body class="site">
+
   <a href="#main" class="js-scroll-into-main">Skip to main content</a>
 
-
-
-
-<header id="header" class="site-header" role="banner">
+  <header id="header" class="site-header" role="banner">
     <section class="site-branding">
       <a href="{{ siteUrl }}"><img src="{{ siteUrl }}assets/img/joshgreendesign-logo.svg" alt="Josh Green Design logo" class="site-logo"></a>
     </section>
@@ -31,39 +29,44 @@
     </section>
   </header><!-- /header -->
 
-
-
   <main id="main" role="main" class="site-content">
   {% block body %}
 
   {% endblock %}
   </main> <!--@main-->
 
-
+  <div class="js-test">
+    <p>
+      this is the javascript test area
+    </p>
+  </div>
 
   <div class="stt"><a href="" id="backToTop" class="scroll-to-top"></a></div>
-<footer class="site-footer" role="contentinfo">
-  <p>The current time is {{ now|date("g:i a") }}.</p>
-  <p>&copy;2014 - {{ now|date("Y") }}</p>
-</footer>
+  <footer class="site-footer" role="contentinfo">
+    <p>The current time is {{ now|date("g:i a") }}.</p>
+    <p>&copy;2014 - {{ now|date("Y") }}</p>
+  </footer>
+
+  <div class="example-box">Hello World!</div>
   <script src="{{ siteUrl }}assets/js/all.js" defer></script>
 
-<script>
-  window.addEventListener('load', function () {
-   // scroll to top
-    document.querySelector('.scroll-to-top').addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector('.site-header').scrollIntoView({ behavior: 'smooth' });
-    });
+  <script>
+    window.addEventListener('load', function () {
+      // scroll to top
+      document.querySelector('.scroll-to-top').addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector('.site-header').scrollIntoView({ behavior: 'smooth' });
+      });
 
-    // scroll into view
-    document.querySelector('.js-scroll-into-main').addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector('#main').scrollIntoView({ behavior: 'smooth' });
-    });
+      // scroll into view
+      document.querySelector('.js-scroll-into-main').addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector('#main').scrollIntoView({ behavior: 'smooth' });
+      });
 
-  });
-</script>
-<script src="assets/js/prism.js"></script>
+    });
+  </script>
+
+  <script src="assets/js/prism.js"></script>
 </body>
 </html>

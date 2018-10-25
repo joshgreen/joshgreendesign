@@ -8,8 +8,32 @@
   <article>
       <h1>{{ entry.title }}</h1>
       <div>
-        {{ entry.blogBody }}
+        <p>{{ entry.blogExcerpt }}</p>
       </div>
+      <div class="post-meta">
+      Posted on {{ entry.postDate|date('long') }}
+      </div>
+
+      <div>
+        {{ entry.blogBody }}
+
+        <img src="{{ entry.blogImage[0].url }}" alt="{{ entry.title }}" />
+
+
+
+        {% for block in entry.blogContent.with(':blogImgMx').all() %}
+
+          {{ block.blogCode }}
+
+          {% if block.blogImgMx[0] is defined %}
+            <img src="{{ block.blogImgMx[0].url }}" width="" height="" alt="{{ block.blogImgMx[0].filename }}">
+          {% endif %}
+
+          {% endfor %}
+
+      </div>
+
+
   </article>
 
 </section>
