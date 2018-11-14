@@ -1,4 +1,7 @@
-{% extends "_layout" %}
+{% extends "_layouts/_layout-main" %}
+
+
+
 {% set title = "Home" %}
 
 {% block body %}
@@ -484,6 +487,14 @@
 {% if currentUser %}
 Welcome, {{ currentUser.friendlyName }}!
 {% endif %}
+
+
+
+<div class="js-test">
+    <p>
+      this is the javascript test area
+    </p>
+  </div>
 
 
 {% endblock %}
